@@ -2,7 +2,7 @@ Project is English Tutor.
 ---------------------------
 Name of program is: AllWords	
  
-Program will can:
+Program will be:
 - ask us from list of words
 - save words in .txt file
 - download data from .txt file
