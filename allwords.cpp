@@ -49,6 +49,7 @@ int main(){
 			}
                 } //else
 		database.push_back(Words(oneword, twoword));
+		std::cout<<oneword<<" "; //smart
 		oneword = "";
 		twoword = "";
         } //for
@@ -57,8 +58,8 @@ int main(){
 	}
 	while (line != "");
 //	for (int i=0; i<database.size(); ++i) {
-                std::cout<<database[1].wordst<<" "<<database[1].wordnd<<std::endl;
-  //      }
+//                std::cout<<database[i].wordst<<" "<<database[i].wordnd;
+//        }
 
 	return 0;
 }
