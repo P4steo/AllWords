@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 #include <fstream> //odczyt danych z pliku
+#include <sstream>
+
 
 struct Words{
 	std::string wordst, wordnd;
@@ -12,6 +14,7 @@ struct Words{
 	Words(){}
 };
 
+
 int main(){
 	std::string insert, nameoffile;
 	std::vector <Words> database;
@@ -19,7 +22,7 @@ int main(){
 	std::cout<<"Insert name of file: ";
 	std::cin>>insert;
 	nameoffile = insert + ".txt";
-	dane.open(nameoffile);
+	dane.open(nameoffile, std::ios::in);
 	if (!dane.good()){
 		std::cout<<"File did not open\n";
 	}
@@ -28,38 +31,19 @@ int main(){
 	}
 	std::string line;
 
-	do {
-		getline(dane, line);
-//		std::cout<<line<<std::endl;
-		std::string oneword, twoword, letter;
-        int length = line.length();
-        for (int i=0; i<=length; i++) { //zapisywanie pierwszego słowa do bazy danych
-                std::string letter (line, i, 1);
-                if (letter != " " && letter != "\t" &&
-                letter != "\n" && letter != "\v" && letter != "\f" && letter != "\r") {
-                        oneword += letter;
-                }
-                else {
-                        for (int j=(i+1); j<=length; j++) { //zapisywanie drugiego słowa do bazy danych
-				std::string letter (line, j, 1);
-                		if (letter != " " && letter != "\t" &&
-                		letter != "\n" && letter != "\v" && letter != "\f" && letter != "\r") {
-                        		twoword += letter;
-				}
-			}
-                } //else
-		database.push_back(Words(oneword, twoword));
-		std::cout<<oneword<<" "; //smart
-		oneword = "";
-		twoword = "";
-        } //for
+	while (std::getline(dane, line))
+	 {
+		std::string buf;
+		std::stringstream ss(line);
+		std::string s1, s2;
 
-
+		ss >> s1;
+		ss >> s2;
+		database.push_back(Words(s1, s2));
 	}
-	while (line != "");
-//	for (int i=0; i<database.size(); ++i) {
-//                std::cout<<database[i].wordst<<" "<<database[i].wordnd;
-//        }
+	for (int i=0; i<database.size(); ++i) {
+		std::cout<<database[i].wordst<<" "<<database[i].wordnd<<"\n";
+	}
 
 	return 0;
 }
