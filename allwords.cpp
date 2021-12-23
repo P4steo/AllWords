@@ -27,8 +27,9 @@ int main(){
 	std::cout<<"          /__/        \__\ |__| |__|       \__/  \__/    |______| |_|    |________| |_____| \n"; */
 	std::string insert, nameoffile;
 	int option;
-	std::cout<<"1. <<<<Open database>>>>\n";
+	std::cout<<"1.  <<<<Open database>>>>\n";
 	std::cout<<"2. <<<<Create database>>>>\n";
+	std::cout<<"3.       <<<<Exit>>>>\n";
 	std::cout<<"Type option: ";
 	std::cin>>option;
 	usleep(1000000);
@@ -41,6 +42,42 @@ int main(){
         dane.open(nameoffile, std::ios::in); */
 //////////////////////////////////////////////////
 	switch(option){
+	case 3:
+		std::cout<<"B\n";
+		usleep(500000);
+		system("clear");
+                std::cout<<"Y\n";   
+                usleep(500000);
+                system("clear");
+                std::cout<<"E\n";   
+                usleep(500000);
+                system("clear");
+                std::cout<<"AllWords by P4steo\n";   
+                usleep(1000000);
+		system("clear");
+		std::cout<<" \n";
+                std::cout<<"AllWords by P4steo\n";   
+                usleep(1000000);
+		system("clear");
+		std::cout<<" \n";
+		std::cout<<" \n";
+                std::cout<<"AllWords by P4steo\n";   
+                usleep(1000000);
+                system("clear");
+                std::cout<<" \n";
+                std::cout<<" \n";
+                std::cout<<" \n";
+                std::cout<<"AllWords by P4steo\n";   
+                usleep(1000000);
+                system("clear");
+                std::cout<<" \n";
+                std::cout<<" \n";
+                std::cout<<" \n";
+                std::cout<<" \n";
+                std::cout<<"AllWords by P4steo\n";   
+                usleep(1000000);
+                system("clear");
+		return 0;
 	case 1 :
 	std::cout<<"Insert name of file: ";
         std::cin>>insert;
@@ -124,5 +161,4 @@ int main(){
 	}//switch w casie
 	}//switch
 
-	return 0;
 }
