@@ -17,6 +17,7 @@ struct Words{
 
 
 int main(){
+	system("clear");
 /*	std::cout<<"                 __         __   __  ___                ___                      _          \n";
 	std::cout<<"     	    /  \       |  | |  | \  \              /  /                     | |         \n";
 	std::cout<<" 		   /	\      |  | |  |  \  \            /  /                      | |         \n";
@@ -132,6 +133,7 @@ int main(){
 		else {
 			std::cout<<"Wrong!\n";
 			usleep(1000000);
+			///wypisywanie poprawnego słowa!
 			system("clear");
 			mistakestab.push_back(j); //zapisywanie indexu błedu
 		}
