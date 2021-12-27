@@ -15,25 +15,30 @@ struct Words{
 	Words(){}
 };
 
+bool Isnumber(int x) {
+	return (x<9 | x>0);
+}
+
 
 int main(){
-	system("clear");
-/*	std::cout<<"                 __         __   __  ___                ___                      _          \n";
-	std::cout<<"     	    /  \       |  | |  | \  \              /  /                     | |         \n";
-	std::cout<<" 		   /	\      |  | |  |  \  \            /  /                      | |         \n";
-	std::cout<<" 		  /  /\  \     |  | |  |   \  \    __    /  / ______   ____   ______| |  _____  \n";
-	std::cout<<" 		 /  /__\  \    |  | |  |    \  \  /  \  /  / |  __  | |  __| |  ___   | |  ___| \n";
-	std::cout<<"            /  ______  \   |  | |  |     \  \/    \/  /  | |  | | | |    | |   |  | |___    \n";
-        std::cout<<"           /  /      \  \  |  | |  |      \    /\    /   | |__| | | |    | |___|  |  ___| | \n";
-	std::cout<<"          /__/        \__\ |__| |__|       \__/  \__/    |______| |_|    |________| |_____| \n"; */
 	std::string insert, nameoffile;
 	int option;
-	std::cout<<"1.  <<<<Open database>>>>\n";
-	std::cout<<"2. <<<<Create database>>>>\n";
-	std::cout<<"3.       <<<<Exit>>>>\n";
-	std::cout<<"Type option: ";
+	while (true) {
+	system("clear");
+	std::cout<<"---\e[91mAll\e[0m\e[92mWords\e[0m---\n";
+	std::cout<<"\e[47m                               \e[0m\n";
+	std::cout<<"\e[31;1m  -------MAIN MENU-------\e[0m\n";
+	std::cout<<"\e[93m 1.  <Open database> \n";
+	std::cout<<" 2. <Create database>\n";
+	std::cout<<" 3.       <Exit>\e[0m \n ";
+	std::cout<<"\e[3mType option: \e[0m";
 	std::cin>>option;
-	usleep(1000000);
+	while (option>3 | option<1) {
+                std::cout<<"\e[96mError - invalid number\n\e[0m";
+                std::cout<<"\n";
+                std::cout<<"\e[3mType correct option: \e[0m";
+                std::cin>>option;
+	}
 	system("clear");
         std::vector <Words> database;
         std::fstream dane; //obiekt typu fstream
@@ -53,43 +58,43 @@ int main(){
                 std::cout<<"E\n";   
                 usleep(500000);
                 system("clear");
-                std::cout<<"AllWords by P4steo\n";   
-                usleep(1000000);
+                std::cout<<"\e[94mAllWords by P4steo\n";   
+                usleep(100000);
 		system("clear");
 		std::cout<<" \n";
                 std::cout<<"AllWords by P4steo\n";   
-                usleep(1000000);
+                usleep(100000);
 		system("clear");
 		std::cout<<" \n";
 		std::cout<<" \n";
                 std::cout<<"AllWords by P4steo\n";   
-                usleep(1000000);
+                usleep(100000);
                 system("clear");
                 std::cout<<" \n";
                 std::cout<<" \n";
                 std::cout<<" \n";
-                std::cout<<"AllWords by P4steo\n";   
-                usleep(1000000);
+                std::cout<<"AllWords by P4steo\n\e[0m";   
+                usleep(100000);
                 system("clear");
                 std::cout<<" \n";
                 std::cout<<" \n";
                 std::cout<<" \n";
                 std::cout<<" \n";
-                std::cout<<"AllWords by P4steo\n";   
+                std::cout<<"\e[91mAllWords by P4steo\n\e[0m";   
                 usleep(1000000);
                 system("clear");
 		return 0;
 	case 1 :
-	std::cout<<"Insert name of file: ";
+	std::cout<<"\e[3mInsert name of file: \e[0m";
         std::cin>>insert;
         nameoffile = insert + ".txt";
         dane.open(nameoffile, std::ios::in);
 
 	if (!dane.good()){
-		std::cout<<"File did not open\n";
+		std::cout<<"\e[96mFile did not open\n\e[0m";
 	}
 	if (dane.eof()){
-		std::cout<<"File is empty\n";
+		std::cout<<"\e[96mFile is empty\n\e[0m";
 	}
 	std::string line;
 
@@ -105,17 +110,24 @@ int main(){
 	}
 
 	for (int i=0; i<database.size(); ++i) {
-		std::cout<<database[i].wordst<<" "<<database[i].wordnd<<"\n";
+		std::cout<<"\e[33m"<<database[i].wordst<<" "<<database[i].wordnd<<"\n\e[0m";
 	}
 	usleep(1000000);
 	int optswitch;
-	std::cout<<"1. <<<<Learn>>>>\n";
-	std::cout<<"2. <<<<Exit>>>>>\n";
-	std::cout<<"Type option: ";
+	std::cout<<"\e[31;1m---MENU---\e[0m\n";
+	std::cout<<"\e[93m 1. <Learn>\n";
+	std::cout<<" 2. <Exit>\n\e[0m";
+	std::cout<<"\e[3mType option: \e[0m";
 	std::cin>>optswitch;
+	while (optswitch>2 | optswitch<1) {
+		std::cout<<"\e[96mError - invalid number\n\e[0m";
+		std::cout<<"\n";
+		std::cout<<"\e[3mType correct option: \e[0m";
+		std::cin>>optswitch;
+	}
 	switch (optswitch) {
 	case 2 :
-	break;
+	usleep(10000);
 	break;
 	case 1 :
 	std::string word;
@@ -126,14 +138,16 @@ int main(){
 		std::cout<<database[j].wordnd<<" - ";
 		std::cin>>word;
 		if (word==database[j].wordst) {
-			std::cout<<"Correct!\n";
+			std::cout<<"\e[92mCorrect!\n\e[0m";
 			usleep(1000000);
 			system("clear");
 		}
 		else {
-			std::cout<<"Wrong!\n";
+			std::cout<<"\e[91mWrong!\n\e[0m";
 			usleep(1000000);
-			///wypisywanie poprawnego słowa!
+			system("clear");
+			std::cout<<"\e[33m"<<database[j].wordst<<"\e[0m"<<std::endl;
+			usleep(1000000);
 			system("clear");
 			mistakestab.push_back(j); //zapisywanie indexu błedu
 		}
@@ -145,15 +159,18 @@ int main(){
                 std::cout<<database[element].wordnd<<" - ";
                 std::cin>>word;
                 if (word==database[element].wordst) {
-                        std::cout<<"Correct!\n";
+                        std::cout<<"\e[92mCorrect!\n\e[0m";
                         usleep(1000000);
                         system("clear");
 			mistakestab.erase(mistakestab.begin()+(lp)); //jeśli dobrze odpowiedzieliśmy usuwamy index
                 }
                 else {
-                        std::cout<<"Wrong!\n";
+                        std::cout<<"\e[91mWrong!\n\e[0m";
+                        usleep(1000000);
+			std::cout<<"\e[33m"<<database[element].wordst<<"\e[0m"<<std::endl;
                         usleep(1000000);
                         system("clear");
+
                 }
         lp++;
         	}//for
@@ -162,5 +179,5 @@ int main(){
 	break;
 	}//switch w casie
 	}//switch
-
+}//while true
 }
