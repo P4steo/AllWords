@@ -56,7 +56,8 @@ int main(){
 	system("clear");
 	Main_Menu();
 	std::cout<<"\e[3mType option: \e[0m";
-	Errors(option);
+//	Errors(option);
+	std::cin>>option;
 	system("clear");
         std::vector <Words> database;
 	std::vector <Words> newdatabase; //w casie 2 (creating)
@@ -185,7 +186,7 @@ int main(){
 		}
 	}//case 1 nawias
 	}//switch w casie 1 nawias
-	case 2 : { //creating database
+/*	case 2 : { //creating database
 		system("clear");
 		std::string word1, word2;
 		int case2opt;
@@ -198,7 +199,7 @@ int main(){
 				break;
 				}
 		}//switch w casie 2
-	} //case 2 nawias
+	} //case 2 nawias	*/
 	}//switch
 }//while true
 }//int main
