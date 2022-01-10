@@ -24,6 +24,31 @@ void Main_Menu() {
         std::cout<<" 3.       <Exit>\e[0m \n ";
 }
 
+void Errors(int x) {
+	        while (!(std::cin>>x)) {
+                	std::cin.clear();
+                	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                	std::cout<<"\e[96mError - it is not number\n\e[0m";
+                	std::cout<<"\n";
+                	usleep(1000000);
+                	system("clear");
+                	Main_Menu();
+                	std::cout<<"\e[3mType correct option: \e[0m";
+                	std::cin>>x;
+        	}
+        	x=x;
+        	while (x>3 | x<1) {
+                	std::cout<<"\e[96mError - invalid number\n\e[0m";
+                	std::cout<<"\n";
+                	usleep(1000000);
+                	system("clear");
+                	Main_Menu();
+			std::cin.clear();
+                	std::cout<<"\e[3mType correct option: \e[0m";
+                	std::cin>>x;
+        	}
+}
+
 int main(){
 	std::string insert, nameoffile;
 	int option;
@@ -31,34 +56,14 @@ int main(){
 	system("clear");
 	Main_Menu();
 	std::cout<<"\e[3mType option: \e[0m";
-	while (!(std::cin>>option)) {
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		std::cout<<"\e[96mError - it is not number\n\e[0m";
-                std::cout<<"\n";
-		usleep(1000000);
-                system("clear");
-	        Main_Menu();
-                std::cout<<"\e[3mType correct option: \e[0m";
-                std::cin>>option;
-	}
-	option=option;
-	while (option>3 | option<1) {
-                std::cout<<"\e[96mError - invalid number\n\e[0m";
-                std::cout<<"\n";
-		usleep(1000000);
-                system("clear");
-	        Main_Menu();
-                std::cout<<"\e[3mType correct option: \e[0m";
-                std::cin>>option;
-	}
+	Errors(option);
 	system("clear");
         std::vector <Words> database;
-//	std::vector <Words> newdatabase; //w casie 2 (creating)
+	std::vector <Words> newdatabase; //w casie 2 (creating)
         std::fstream dane; //obiekt typu fstream
 //////////////////////////////////////////////////
 	switch(option){
-	case 3:
+	case 3: {
 		std::cout<<"\e[32mSee You Later!\e[0m";
 		usleep(1000000);
 		system ("clear");
@@ -73,7 +78,8 @@ int main(){
                 std::cout<<"\e[91mAllWords by P4steo\n\e[0m";
                 system("clear");
 		return 0;
-	case 1 :
+		}
+	case 1 : {
 		std::cout<<"\e[91mType \"Exit\" to back to Main Menu\e[0m"<<std::endl;
 		std::cout<<"\e[3mInsert name of file, which content You want to use: \e[0m";
         	std::cin>>insert;
@@ -123,10 +129,11 @@ int main(){
 			std::cin>>optswitch;
 		}
 		switch (optswitch) {
-			case 2 :
+			case 2 : {
 				usleep(10000);
 				break;
-			case 1 :
+				}
+			case 1 : {
 				std::string word;
 				std::vector <int> mistakestab; //tablica z indexami błednych odpowiedzi
 				int lp=0;
@@ -174,21 +181,24 @@ int main(){
 		}//while
 		std::cout<<"\e[92mAll Words passed\n\e[0m";
 		usleep(1000000);
-		break;
-	}//switch w casie 1
-	case 2 : //creating database
+		break; 
+		}
+	}//case 1 nawias
+	}//switch w casie 1 nawias
+	case 2 : { //creating database
+		system("clear");
 		std::string word1, word2;
 		int case2opt;
-
-
 		std::cout<<"\e[31;1m---MENU---\e[0m\n";
 		std::cout<<"\e[93m 1. <New database>\n";
 		std::cout<<"\e[93m 2. <Edit database>\n";
-		std::cout<<"\e[93m 3. <Exit>\n"; 
+		std::cout<<"\e[93m 3. <Exit>\n";
 		switch (case2opt) {
-			case 3:
-				break; 
-		}//switch w casie 2 
+			case 3: {
+				break;
+				}
+		}//switch w casie 2
+	} //case 2 nawias
 	}//switch
 }//while true
 }//int main
