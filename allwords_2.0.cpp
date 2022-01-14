@@ -41,19 +41,6 @@ int main(){
 		std::fstream dane;
 
 		switch (option){
-			case 3: {
-				std::cout<<"\e[32mSee You Later!\e0m\n";
-				usleep(100000);
-				for (int i=0; i<8; i++) {
-					for (int j=0; j<=i; j++) {
-						std::cout<<" \n";
-					}
-				std::cout<<"\e[94mAllWords by P4steo\e[0m\n";
-				usleep(100000);
-				system("clear");
-				return 0;
-			} //case 3 nawias
-
 			case 1: {
 				std::cout<<"\e[91mType \"Exit\" to back to Main Menu: \e[0m"<<std::endl;
 				std::cout<<"\e[3mInsert name of file, which content You want to use: \e[0m";
@@ -165,32 +152,31 @@ int main(){
 					} // case 2 w case 1
 
 				} //switch w case 1
+			} //case 1
+            case 2: {
+                system("clear");
+                std::string word1, word2;
+                int case2opt;
+                std::cout<<"\e[31;1m---MENU---\e[0m\n";
+                std::cout<<"\e[93m 1. <New database>\n";
+                std::cout<<" 2. <Edit database>\n";
+                std::cout<<" 3. <Exit>\e[0m\n";
+            } //case 2
+            case 3: {
+                std::cout<<"\e[32mSee You Later!\e0m\n";
+                usleep(100000);
+                for (int i=0; i<8; i++) {
+                    for (int j=0; j<=i; j++) {
+                        std::cout<<" \n";
+                    }
 
-				case 2: {
-					system("clear");
-					std::string word1, word2;
-					int case2opt;
-					std::cout<<"\e[31;1m---MENU---\e[0m\n";
-					std::cout<<"\e[93m 1. <New database>\n";
-					std::cout<<" 2. <Edit database>\n";
-					std::cout<<" 3. <Exit>\e[0m\n";
-				} //case 2
-	                        case 3: {
-        	                        std::cout<<"\e[32mSee You Later!\e0m\n";
-                	                usleep(100000);
-                        	        for (int i=0; i<8; i++) {
-                                	        for (int j=0; j<=i; j++) {
-                                        	        std::cout<<" \n";
-                                        	}
+                    std::cout<<"\e[94mAllWords by P4steo\e[0m\n";
+                    usleep(100000);
+                    system("clear");
+                }
+                return 0;
+            } //case 3 nawias
 
-                                		std::cout<<"\e[94mAllWords by P4steo\e[0m\n";
-                               	 		usleep(100000);
-                                		system("clear");
-					}
-                                	return 0;
-                        	} //case 3 nawias
-
-			}//switch głowny
-		}//while true
-	}//int main
-
+        }//switch głowny
+    }//while true
+}//int main
