@@ -24,24 +24,30 @@ void Main_Menu() {
 }
 
 
-//void Errors{}
 
 int main(){
 	std::string insert,nameoffile;
-	int option;
+	char option;
 	while (true) {
 		system("clear");
 		Main_Menu();
 		std::cout<<"\e[3mType option: \e[0m";
-		//Errors(option);
 		std::cin>>option;
+
+		int optint = int(option);
+		if (optint<49 || optint>51)
+			continue;
+		else {
+			optint-=48;
+		}
+
 		system("clear");
 
 		std::vector <Words> database; //case 1 (open)
 		std::vector <Words> newdatabase; //case 2 (create)
 		std::fstream dane;
 
-		switch (option){
+		switch (optint){
 			case 1: {
 				std::cout<<"\e[91mType \"Exit\" to back to Main Menu: \e[0m"<<std::endl;
 				std::cout<<"\e[3mInsert name of file, which content You want to use: \e[0m";
@@ -76,25 +82,29 @@ int main(){
 				}
 
 				for (int i=0; i<database.size(); ++i) {
-					std::cout<<"\e[[33m"<<database[i].wordst<<" - "<<database[i].wordnd<<"\e[0m\n"; //kolor myslnika
+					std::cout<<"\e[33m"<<database[i].wordst<<" - "<<database[i].wordnd<<"\e[0m\n"; //kolor myslnika
 				}
 				usleep(1000000);
 
-				int optswitch;
+				char optswitch;
 				std::cout<<"\e[31;1m---MENU---\e[0m\n";
 				std::cout<<"\e[93m 1. <Learn>\n";
 				std::cout<<" 2. <Back to Main Menu>\e[0m\n";
 				std::cout<<"\e[3mType option: \e[0m";
 				std::cin>>optswitch;
 
-				while (optswitch>2 || optswitch<1) {
-					std::cout<<"\e[96mError - invalid number\e[0m\n";
-					std::cout<<"\n";
-					std::cout<<"\e[3mType a correct option: \e[0m";
-					std::cin>>optswitch;
+                		int optswitchint = int(optswitch);
+                		while (optswitchint<49 || optswitchint>50) {
+                                        std::cout<<"\e[96mError - invalid number\e[0m\n";
+                                        std::cout<<"\n";
+                                        std::cout<<"\e[3mType a correct option: \e[0m";
+                                        std::cin>>optswitch;
+					optswitchint = int(optswitch);
 				}
+                        	optswitchint-=48;
 
-				switch (optswitch) {
+
+				switch (optswitchint) {
 					case 1: {
 						std::string word;
 						std::vector <int> mistakestab; //tablica blednych odpowiedzi (indexy)
