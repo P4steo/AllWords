@@ -14,14 +14,15 @@ struct Words{
 	Words(){}
 };
 
-void Main_Menu(){
-	std::cout<<"---\e[91mAll\e[0m\e[92mWords\e[0m---\n";
-	std::cout<<"\e[47m                               \e[0m\n";
-	std::cout<<"\e[31;1m  -------MAIN MENU-------\e[0m\n";
-	std::cout<<"\e[93m 1.  <Open database> \n";
-	std::cout<<" 2.  <Create new database>\n";
-	std::cout<<" 3.        <Exit>\e[0m \n ";
+void Main_Menu() {
+        std::cout<<"---\e[91mAll\e[0m\e[92mWords\e[0m---\n";
+        std::cout<<"\e[47m                               \e[0m\n";
+        std::cout<<"\e[31;1m  -------MAIN MENU-------\e[0m\n";
+        std::cout<<"\e[93m 1.  <Open database> \n";
+        std::cout<<" 2. <Create database>\n";
+        std::cout<<" 3.       <Exit>\e[0m \n ";
 }
+
 
 //void Errors{}
 
@@ -154,17 +155,36 @@ int main(){
 				} //switch w case 1
 			} //case 1
             case 2: {
+		int optioncase2;
+		std::string wordstcase2, wordndcase2;
+
                 system("clear");
                 std::string word1, word2;
                 int case2opt;
                 std::cout<<"\e[31;1m---MENU---\e[0m\n";
                 std::cout<<"\e[93m 1. <New database>\n";
                 std::cout<<" 2. <Edit database>\n";
-                std::cout<<" 3. <Exit>\e[0m\n";
+                std::cout<<" 3. <Back to Main Menu>\e[0m\n";
+		std::cout<<"\e[3mType option: \e[0m";
+		std::cin>>optioncase2;
+
+		switch (optioncase2) {
+			case 1: {
+				std::cout<<"Put first word: ";
+				std::cin>>wordstcase2;;
+				std::cout<<"\nPut second word: ";
+				std::cin>>wordndcase2;
+			}//case 1 w case 2
+			case 2: {
+				//edit database
+			}
+			case 3: {
+				continue;
+				system("clear");
+			}
+		} //switch w case 2
             } //case 2
             case 3: {
-                std::cout<<"\e[32mSee You Later!\e0m\n";
-                usleep(100000);
                 for (int i=0; i<8; i++) {
                     for (int j=0; j<=i; j++) {
                         std::cout<<" \n";
@@ -174,6 +194,9 @@ int main(){
                     usleep(100000);
                     system("clear");
                 }
+                std::cout<<"\e[93mAllWords by P4steo\e[0m\n";
+                usleep(1000000);
+                system("clear");
                 return 0;
             } //case 3 nawias
 
