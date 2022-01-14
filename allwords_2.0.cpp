@@ -24,7 +24,6 @@ void Main_Menu() {
 }
 
 
-
 int main(){
 	std::string insert,nameoffile;
 	char option;
@@ -40,6 +39,7 @@ int main(){
 		else {
 			optint-=48;
 		}
+		option=optint;
 
 		system("clear");
 
@@ -47,7 +47,7 @@ int main(){
 		std::vector <Words> newdatabase; //case 2 (create)
 		std::fstream dane;
 
-		switch (optint){
+		switch (option){
 			case 1: {
 				std::cout<<"\e[91mType \"Exit\" to back to Main Menu: \e[0m"<<std::endl;
 				std::cout<<"\e[3mInsert name of file, which content You want to use: \e[0m";
@@ -81,8 +81,11 @@ int main(){
 					database.push_back(Words(s1, s2));
 				}
 
+				usleep(1000000);
+				system("clear");
 				for (int i=0; i<database.size(); ++i) {
-					std::cout<<"\e[33m"<<database[i].wordst<<" - "<<database[i].wordnd<<"\e[0m\n"; //kolor myslnika
+					std::cout<<"\e[31m"<<database[i].wordst<<"\e[0m"<<" - "<<
+					"\e[32m"<<database[i].wordnd<<"\e[0m\n";
 				}
 				usleep(1000000);
 
@@ -120,10 +123,10 @@ int main(){
 								system("clear");
 							}
 							else {
-								std::cout<<"\e[91mWrong!\e[0m";
+								std::cout<<"\e[91mWrong!\e[0m\n";
 								usleep(1000000);
 								system("clear");
-								std::cout<<"\e[33m"<<database[k].wordst<<"\e[0m"<<std::endl;
+								std::cout<<"\e[32m"<<database[k].wordst<<"\e[0m\n";
 								usleep(1000000);
 								system("clear");
 								mistakestab.push_back(k);
@@ -159,7 +162,7 @@ int main(){
 
 					case 2: {
 						usleep (10000);
-						break;
+						continue;
 					} // case 2 w case 1
 
 				} //switch w case 1
@@ -180,10 +183,24 @@ int main(){
 
 		switch (optioncase2) {
 			case 1: {
-				std::cout<<"Put first word: ";
-				std::cin>>wordstcase2;;
-				std::cout<<"\nPut second word: ";
-				std::cin>>wordndcase2;
+				std::string ans;
+				int i=0;
+				do {
+					std::cout<<"\n\e[31mPut english word: \e[0m";
+					std::cin>>wordstcase2;
+					std::cout<<"\e[32mPut polish word: \e[0m";
+					std::cin>>wordndcase2;
+					newdatabase.push_back(Words(wordstcase2, wordndcase2));
+					std::cout<<"\e[40m                       \e[0m\n";
+					std::cout<<"\e[31m"<<newdatabase[i].wordst<<
+					"\e[0m"<<" - "<<"\e[32m"<<newdatabase[i].wordnd<<"\e[0m";
+					std::cout<<"\n";
+					std::cout<<"\e[3mType \"Add\" to add next pair of words: \e[0m";
+					std::cin>>ans;
+					if (ans == "Add")
+						i++;
+				}
+				while (ans=="Add");
 			}//case 1 w case 2
 			case 2: {
 				//edit database
