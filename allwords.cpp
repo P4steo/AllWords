@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -24,34 +25,13 @@ void Main_Menu() {
         std::cout<<" 3.       <Exit>\e[0m \n ";
 }
 
-void Errors(int x) {
-	        while (!(std::cin>>x)) {
-                	std::cin.clear();
-                	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                	std::cout<<"\e[96mError - it is not number\n\e[0m";
-                	std::cout<<"\n";
-                	usleep(1000000);
-                	system("clear");
-                	Main_Menu();
-                	std::cout<<"\e[3mType correct option: \e[0m";
-                	std::cin>>x;
-        	}
-        	x=x;
-        	while (x>3 | x<1) {
-                	std::cout<<"\e[96mError - invalid number\n\e[0m";
-                	std::cout<<"\n";
-                	usleep(1000000);
-                	system("clear");
-                	Main_Menu();
-			std::cin.clear();
-                	std::cout<<"\e[3mType correct option: \e[0m";
-                	std::cin>>x;
-        	}
-}
+//void Errors(std::string x) {
+
+//}
 
 int main(){
 	std::string insert, nameoffile;
-	int option;
+	std::string option;
 	while (true) {
 	system("clear");
 	Main_Menu();
@@ -182,11 +162,11 @@ int main(){
 		}//while
 		std::cout<<"\e[92mAll Words passed\n\e[0m";
 		usleep(1000000);
-		break; 
+		break;
 		}
 	}//case 1 nawias
 	}//switch w casie 1 nawias
-/*	case 2 : { //creating database
+	case 2 : { //creating database
 		system("clear");
 		std::string word1, word2;
 		int case2opt;
@@ -199,7 +179,7 @@ int main(){
 				break;
 				}
 		}//switch w casie 2
-	} //case 2 nawias	*/
+	} //case 2 nawias	
 	}//switch
 }//while true
 }//int main
