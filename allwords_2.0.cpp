@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -157,7 +158,7 @@ int main(){
 
 						std::cout<<"\e[92mAll Words passed\e[0m\n";
 						usleep(1000000);
-						break;
+						continue;
 					} //case 1 w case 1
 
 					case 2: {
@@ -168,6 +169,7 @@ int main(){
 				} //switch w case 1
 			} //case 1
             case 2: {
+
 		int optioncase2;
 		std::string wordstcase2, wordndcase2;
 
@@ -175,17 +177,18 @@ int main(){
                 std::string word1, word2;
                 int case2opt;
                 std::cout<<"\e[31;1m---MENU---\e[0m\n";
-                std::cout<<"\e[93m 1. <New database>\n";
-                std::cout<<" 2. <Edit database>\n";
-                std::cout<<" 3. <Back to Main Menu>\e[0m\n";
+                std::cout<<"\e[93m 1.    <New database>\n";
+                std::cout<<" 2.  <Back to Main Menu>\e[0m\n";
 		std::cout<<"\e[3mType option: \e[0m";
 		std::cin>>optioncase2;
 
 		switch (optioncase2) {
 			case 1: {
-				std::string ans;
-				int i=0;
-				do {
+				std::string ans, save;
+				int i=0, lp;
+				std::cout<<"\e[3mHow many pairs of words, do You want to add: \e[0m";
+				std::cin>>lp;
+				for (int j=0; j<lp; j++) {
 					std::cout<<"\n\e[31mPut english word: \e[0m";
 					std::cin>>wordstcase2;
 					std::cout<<"\e[32mPut polish word: \e[0m";
@@ -195,22 +198,24 @@ int main(){
 					std::cout<<"\e[31m"<<newdatabase[i].wordst<<
 					"\e[0m"<<" - "<<"\e[32m"<<newdatabase[i].wordnd<<"\e[0m";
 					std::cout<<"\n";
-					std::cout<<"\e[3mType \"Add\" to add next pair of words: \e[0m";
-					std::cin>>ans;
-					if (ans == "Add")
 						i++;
+				} //for
+				usleep(1000000);
+				system("clear");
+
+				for (int w=0; w<=newdatabase.size(); ++w){
+					std::cout<<"\e[31m"<<newdatabase[w].wordst<<
+                                        "\e[0m"<<" - "<<"\e[32m"<<newdatabase[w].wordnd<<"\e[0m\n";
 				}
-				while (ans=="Add");
-			}//case 1 w case 2
-			case 2: {
-				//edit database
+				//zapisywanie do pliku
 			}
-			case 3: {
+			case 2: {
 				continue;
 				system("clear");
 			}
 		} //switch w case 2
             } //case 2
+
             case 3: {
                 for (int i=0; i<8; i++) {
                     for (int j=0; j<=i; j++) {
