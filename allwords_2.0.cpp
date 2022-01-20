@@ -190,9 +190,9 @@ int main(){
 				std::cin>>lp;
 				for (int j=0; j<lp; j++) {
 					std::cout<<"\n\e[31mPut english word: \e[0m";
-					std::cin>>wordstcase2;
+					std::getline(std::cin, wordstcase2);
 					std::cout<<"\e[32mPut polish word: \e[0m";
-					std::cin>>wordndcase2;
+					std::getline(std::cin, wordndcase2);
 					newdatabase.push_back(Words(wordstcase2, wordndcase2));
 					std::cout<<"\e[40m                       \e[0m\n";
 					std::cout<<"\e[31m"<<newdatabase[i].wordst<<
@@ -203,10 +203,11 @@ int main(){
 				usleep(1000000);
 				system("clear");
 
-				for (int w=0; w<=newdatabase.size(); ++w){
+				for (int w=0; w<newdatabase.size(); ++w){
 					std::cout<<"\e[31m"<<newdatabase[w].wordst<<
                                         "\e[0m"<<" - "<<"\e[32m"<<newdatabase[w].wordnd<<"\e[0m\n";
 				}
+				usleep(1000000);
 				//zapisywanie do pliku
 			}
 			case 2: {
