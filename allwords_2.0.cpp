@@ -105,10 +105,10 @@ int main(){
                                         std::cin>>optswitch;
 					optswitchint = int(optswitch);
 				}
-                        	optswitchint-=48;
+                        	optswitch-=48;
 
 
-				switch (optswitchint) {
+				switch (optswitch) {
 					case 1: {
 						std::string word;
 						std::vector <int> mistakestab; //tablica blednych odpowiedzi (indexy)
@@ -170,17 +170,27 @@ int main(){
 			} //case 1
             case 2: {
 
-		int optioncase2;
+		char optioncase2;
 		std::string wordstcase2, wordndcase2;
 
                 system("clear");
                 std::string word1, word2;
-                int case2opt;
+
                 std::cout<<"\e[31;1m---MENU---\e[0m\n";
                 std::cout<<"\e[93m 1.    <New database>\n";
                 std::cout<<" 2.  <Back to Main Menu>\e[0m\n";
 		std::cout<<"\e[3mType option: \e[0m";
 		std::cin>>optioncase2;
+
+		int optswitchint=int(optioncase2);
+		while (optswitchint<49 || optswitchint>50) {
+                                        std::cout<<"\e[96mError - invalid number\e[0m\n";
+                                        std::cout<<"\n";
+                                        std::cout<<"\e[3mType a correct option: \e[0m";
+                                        std::cin>>optioncase2;
+                                        optswitchint = int(optioncase2);
+                                }
+                                optioncase2-=48;
 
 		switch (optioncase2) {
 			case 1: {
@@ -188,11 +198,11 @@ int main(){
 				int i=0, lp;
 				std::cout<<"\e[3mHow many pairs of words, do You want to add: \e[0m";
 				std::cin>>lp;
-				for (int j=0; j<lp; j++) {
+				for (int j=0; j<lp; ++j) {
 					std::cout<<"\n\e[31mPut english word: \e[0m";
-					std::getline(std::cin, wordstcase2);
+					std::cin>>wordstcase2;
 					std::cout<<"\e[32mPut polish word: \e[0m";
-					std::getline(std::cin, wordndcase2);
+					std::cin>>wordndcase2;
 					newdatabase.push_back(Words(wordstcase2, wordndcase2));
 					std::cout<<"\e[40m                       \e[0m\n";
 					std::cout<<"\e[31m"<<newdatabase[i].wordst<<
@@ -209,6 +219,18 @@ int main(){
 				}
 				usleep(1000000);
 				//zapisywanie do pliku
+				std::cout<<"\e[3mSave as: \e[0m";
+				std::cin>>save;
+				save+=".txt";
+
+				std::fstream savefile;
+				savefile.open(save, std::ios::out);
+				for (int w=0; w<newdatabase.size(); ++w){
+                                        savefile<<newdatabase[w].wordst<<" "<<
+                                        newdatabase[w].wordnd<<std::endl;
+                                }
+				savefile.close();
+
 			}
 			case 2: {
 				continue;
