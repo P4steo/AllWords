@@ -8,3 +8,5 @@ Program will be:
 - download data from .txt file
 - as user we will can add new words.
 
+Code is adapted to Linux
+
