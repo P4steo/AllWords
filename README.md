@@ -1,12 +1,8 @@
-Project is English Tutor.
----------------------------
-Name of program is: AllWords	
- 
-Program will be:
-- ask us from list of words
-- save words in .txt file
-- download data from .txt file
-- as user we will can add new words.
+Project All Words
+This program is helping to learn new words.
+Main functionalities are:
+	fetching data from .txt file
+	saving data in .txt file
+	enabling to add data
 
-Code is adapted to Linux
-
+Code and .exe file are adapted to the Linux
